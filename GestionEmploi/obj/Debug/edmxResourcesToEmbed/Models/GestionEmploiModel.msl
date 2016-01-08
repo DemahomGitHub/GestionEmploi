@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBIG3A8ModelStoreContainer" CdmEntityContainer="DBIG3A8Entities">
+    <EntitySetMapping Name="Emploi">
+      <EntityTypeMapping TypeName="DBIG3A8Model.Emploi">
+        <MappingFragment StoreEntitySet="Emploi">
+          <ScalarProperty Name="idEmploi" ColumnName="idEmploi" />
+          <ScalarProperty Name="dateEntree" ColumnName="dateEntree" />
+          <ScalarProperty Name="dateSortie" ColumnName="dateSortie" />
+          <ScalarProperty Name="numDossier" ColumnName="numDossier" />
+          <ScalarProperty Name="numeroEntreprise" ColumnName="numeroEntreprise" />
+          <ScalarProperty Name="codeProfession" ColumnName="codeProfession" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Personne">
+      <EntityTypeMapping TypeName="DBIG3A8Model.Personne">
+        <MappingFragment StoreEntitySet="Personne">
+          <ScalarProperty Name="idPersonne" ColumnName="idPersonne" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="adresse" ColumnName="adresse" />
+          <ScalarProperty Name="numTel" ColumnName="numTel" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Travailleur">
+      <EntityTypeMapping TypeName="DBIG3A8Model.Travailleur">
+        <MappingFragment StoreEntitySet="Travailleur">
+          <ScalarProperty Name="numDossier" ColumnName="numDossier" />
+          <ScalarProperty Name="idPersonne" ColumnName="idPersonne" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

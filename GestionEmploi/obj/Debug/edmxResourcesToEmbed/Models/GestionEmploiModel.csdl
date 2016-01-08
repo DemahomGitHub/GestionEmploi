@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBIG3A8Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Emploi">
+    <Key>
+      <PropertyRef Name="idEmploi" />
+    </Key>
+    <Property Name="idEmploi" Type="Decimal" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="dateEntree" Type="DateTime" Precision="0" />
+    <Property Name="dateSortie" Type="DateTime" Precision="0" />
+    <Property Name="numDossier" Type="Decimal" Precision="5" Scale="0" />
+    <Property Name="numeroEntreprise" Type="Decimal" Precision="5" Scale="0" />
+    <Property Name="codeProfession" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Travailleur" Relationship="Self.REF_Emplo_Trava_FK" FromRole="Emploi" ToRole="Travailleur" />
+  </EntityType>
+  <EntityType Name="Personne">
+    <Key>
+      <PropertyRef Name="idPersonne" />
+    </Key>
+    <Property Name="idPersonne" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="firstName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="lastName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="adresse" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="numTel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Travailleur" Relationship="Self.SID_Trava_Perso_FK" FromRole="Personne" ToRole="Travailleur" />
+  </EntityType>
+  <EntityType Name="Travailleur">
+    <Key>
+      <PropertyRef Name="numDossier" />
+    </Key>
+    <Property Name="numDossier" Type="Decimal" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="idPersonne" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Emploi" Relationship="Self.REF_Emplo_Trava_FK" FromRole="Travailleur" ToRole="Emploi" />
+    <NavigationProperty Name="Personne" Relationship="Self.SID_Trava_Perso_FK" FromRole="Travailleur" ToRole="Personne" />
+  </EntityType>
+  <Association Name="REF_Emplo_Trava_FK">
+    <End Role="Travailleur" Type="Self.Travailleur" Multiplicity="0..1" />
+    <End Role="Emploi" Type="Self.Emploi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Travailleur">
+        <PropertyRef Name="numDossier" />
+      </Principal>
+      <Dependent Role="Emploi">
+        <PropertyRef Name="numDossier" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SID_Trava_Perso_FK">
+    <End Role="Personne" Type="Self.Personne" Multiplicity="1" />
+    <End Role="Travailleur" Type="Self.Travailleur" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personne">
+        <PropertyRef Name="idPersonne" />
+      </Principal>
+      <Dependent Role="Travailleur">
+        <PropertyRef Name="idPersonne" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBIG3A8Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Emploi" EntityType="Self.Emploi" />
+    <EntitySet Name="Personne" EntityType="Self.Personne" />
+    <EntitySet Name="Travailleur" EntityType="Self.Travailleur" />
+    <AssociationSet Name="REF_Emplo_Trava_FK" Association="Self.REF_Emplo_Trava_FK">
+      <End Role="Travailleur" EntitySet="Travailleur" />
+      <End Role="Emploi" EntitySet="Emploi" />
+    </AssociationSet>
+    <AssociationSet Name="SID_Trava_Perso_FK" Association="Self.SID_Trava_Perso_FK">
+      <End Role="Personne" EntitySet="Personne" />
+      <End Role="Travailleur" EntitySet="Travailleur" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
