@@ -74,3 +74,4 @@ C:\Users\Demahom\Desktop\BDEmploi\EncodageEmploiV2\GestionEmploi\GestionEmploi\b
 C:\Users\Demahom\Desktop\BDEmploi\EncodageEmploiV2\GestionEmploi\GestionEmploi\bin\System.Web.Http.Owin.xml
 C:\Users\Demahom\Desktop\BDEmploi\EncodageEmploiV2\GestionEmploi\GestionEmploi\obj\Debug\GestionEmploi.dll
 C:\Users\Demahom\Desktop\BDEmploi\EncodageEmploiV2\GestionEmploi\GestionEmploi\obj\Debug\GestionEmploi.pdb
+C:\Users\Demahom\Desktop\BDEmploi\EncodageEmploiV2\GestionEmploi\GestionEmploi\obj\Debug\GestionEmploi.csprojResolveAssemblyReference.cache

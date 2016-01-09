@@ -1,6 +1,18 @@
 ﻿var myApp = angular.module('myApp', []);
 
 myApp.controller('GestionEmploiCtrl', function ($scope, $http) {
+
+    $scope.listerPersonnes = function () {
+        $http.get('/api/Personnes')
+         .success(function (resultat) {
+             $scope.personnes = resultat;
+         })
+         .error(function (data) {
+             console.log(data);
+         });
+    }
+    $scope.listerPersonnes();
+
     $scope.listerTravailleurs = function () {
         $http.get('/api/Travailleurs')
          .success(function (resultat) {
